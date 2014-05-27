@@ -544,11 +544,7 @@ static NSString * const _animationValuesKey = @"animationValues";
     while (angle >= 2*M_PI - M_PI_4) {
         angle -= M_PI*2;
     }
-#if (__IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0)
     CGSize textSize = [text sizeWithFont:self.font];
-#else
-    CGSize textSize = [text sizeWithAttributes:@{NSFontAttributeName:self.font}];
-#endif
     CGPoint anchorPoint;
     //clockwise
     if(angle >= -M_PI_4 && angle < M_PI_4){
@@ -569,11 +565,7 @@ static NSString * const _animationValuesKey = @"animationValues";
                               textSize.width,
                               textSize.height);
     UIGraphicsPushContext(ctx);
-#if (__IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0)
     [text drawInRect:frame withFont:self.font];
-#else
-    [text drawInRect:frame withAttributes:@{NSFontAttributeName:self.font}];
-#endif
     
     UIGraphicsPopContext();
 }
